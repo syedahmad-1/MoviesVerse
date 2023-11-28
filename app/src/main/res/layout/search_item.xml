@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10dp">
+
+    <ImageView
+        android:id="@+id/posterIv"
+        android:layout_width="182dp"
+        android:layout_height="273dp"
+        android:src="@drawable/poster"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:maxEms="10"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/posterIv"
+        app:layout_constraintTop_toTopOf="@+id/posterIv"
+        tools:text="Movie Name Sample" />
+
+    <TextView
+        android:id="@+id/ratingTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@id/nameTv"
+        app:layout_constraintTop_toBottomOf="@id/nameTv"
+        tools:text="3.5" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="?ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:rating="5"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:transformPivotX="0dp"
+        android:transformPivotY="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingTv"
+        app:layout_constraintStart_toEndOf="@id/ratingTv"
+        app:layout_constraintTop_toTopOf="@id/ratingTv" />
+
+    <TextView
+        android:id="@+id/genreTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxEms="13"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ratingTv"
+        app:layout_constraintTop_toBottomOf="@id/ratingTv"
+        tools:text="Action, Romance, Thriller, Horror, Comedy" />
+
+    <TextView
+        android:id="@+id/summaryTv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/summary_example"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/genreTv"
+        app:layout_constraintTop_toBottomOf="@id/genreTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

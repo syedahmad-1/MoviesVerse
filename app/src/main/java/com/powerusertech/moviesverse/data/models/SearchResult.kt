@@ -3,11 +3,11 @@ package com.powerusertech.moviesverse.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieApiResponse(
+data class SearchResult(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<ResultX>,
+    val results: List<Result>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")
