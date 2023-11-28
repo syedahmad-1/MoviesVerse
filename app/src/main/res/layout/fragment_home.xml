@@ -7,17 +7,18 @@
     tools:context=".presentation.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/headingTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/all_trending"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,91 +26,94 @@
             android:id="@+id/seeMoreTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/yellow"
             android:text="@string/see_more"
+            android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/headingTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/headingTv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/trendingAllRv"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:itemCount="5"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/home_item"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headingTv" />
+            app:layout_constraintTop_toBottomOf="@+id/headingTv"
+            tools:itemCount="5"
+            tools:listitem="@layout/home_item" />
 
         <TextView
             android:id="@+id/bestMovieTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/best_movies"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp"
+            android:text="@string/best_movies"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trendingAllRv" />
 
         <TextView
             android:id="@+id/seeMoreBestMovieTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/yellow"
             android:text="@string/see_more"
+            android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/bestMovieTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/bestMovieTv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bestMovieRv"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:itemCount="5"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/home_item"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bestMovieTv" />
+            app:layout_constraintTop_toBottomOf="@+id/bestMovieTv"
+            tools:itemCount="5"
+            tools:listitem="@layout/home_item" />
+
         <TextView
             android:id="@+id/topRatedOnTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/top_rated_on_tv"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="20dp"
+            android:text="@string/top_rated_on_tv"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bestMovieRv" />
 
         <TextView
             android:id="@+id/seeMoreTopRatedOnTvTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/yellow"
             android:text="@string/see_more"
+            android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/topRatedOnTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/topRatedOnTv" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/topRatedOnTvRv"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:itemCount="5"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/home_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topRatedOnTv" />
+            app:layout_constraintTop_toBottomOf="@+id/topRatedOnTv"
+            tools:itemCount="5"
+            tools:listitem="@layout/home_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

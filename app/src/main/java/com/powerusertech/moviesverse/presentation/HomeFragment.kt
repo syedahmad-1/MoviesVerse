@@ -19,9 +19,11 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val homeViewModel by viewModels<HomeViewmodel>()
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     private val homeAdapter by lazy { HomeAdapter() }
+    private val allTrendingAdapter by lazy { HomeAdapter() }
+    private val trendingTvAdapter by lazy { HomeAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +31,10 @@ class HomeFragment : Fragment() {
     ): View {
 
         _binding = FragmentHomeBinding.inflate(layoutInflater)
+
+        homeViewModel.getTrendingMoviesByWeek()
+        homeViewModel.getTrendingAllByWeek()
+        homeViewModel.getTrendingTvByWeek()
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -45,15 +51,49 @@ class HomeFragment : Fragment() {
 
 
         binding.trendingAllRv.layoutManager = horizontalLayoutManager
-        binding.trendingAllRv.adapter = homeAdapter
+        binding.trendingAllRv.adapter = allTrendingAdapter
 
         binding.bestMovieRv.layoutManager = horizontalLayoutManager2
         binding.bestMovieRv.adapter =  homeAdapter
 
         binding.topRatedOnTvRv.layoutManager = horizontalLayoutManager3
-        binding.topRatedOnTvRv.adapter =  homeAdapter
+        binding.topRatedOnTvRv.adapter =  trendingTvAdapter
 
-        homeViewModel.getTrendingMoviesByWeek()
+        homeViewModel.trendingAllByWeekLiveData.observe(viewLifecycleOwner){
+            when (it) {
+                is NetworkResult.Error -> {
+                    Log.d("TAG", "onCreateView: ${it.message}")
+                }
+
+                is NetworkResult.Loading -> {
+                    Log.d("TAG", "onViewCreated: Loading...")
+                }
+
+                is NetworkResult.Success -> {
+                    val result = it.data?.results
+                    Log.d("TAG", "onCreateView: $result")
+                    allTrendingAdapter.submitList(result)
+                }
+            }
+        }
+        homeViewModel.trendingTvByWeekLiveData.observe(viewLifecycleOwner){
+            when (it) {
+                is NetworkResult.Error -> {
+                    Log.d("TAG", "onCreateView: ${it.message}")
+                }
+
+                is NetworkResult.Loading -> {
+                    Log.d("TAG", "onViewCreated: Loading...")
+                }
+
+                is NetworkResult.Success -> {
+                    val result = it.data?.results
+                    Log.d("TAG", "onCreateView: $result")
+                    trendingTvAdapter.submitList(result)
+                }
+            }
+        }
+
         homeViewModel.trendingMovieResponseLiveData.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResult.Error -> {

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/posterIv"
-        android:layout_width="100dp"
-        android:layout_height="160dp"
+        android:layout_width="120dp"
+        android:layout_height="192dp"
         android:src="@drawable/poster"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="@id/posterIv"
         app:layout_constraintTop_toBottomOf="@id/posterIv"
         tools:text="Movie Name Sample"
-        android:textSize="11sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:ellipsize="end"
         android:maxEms="10"

@@ -1,7 +1,8 @@
 package com.powerusertech.moviesverse.core.di
 
 import com.powerusertech.moviesverse.core.utils.Constants.BASE_URL
-import com.powerusertech.moviesverse.data.MoviesApi
+import com.powerusertech.moviesverse.data.network.Api.SearchApi
+import com.powerusertech.moviesverse.data.network.Api.TrendingApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,11 +33,18 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providesMoviesLocalDataSourceApi(
+    fun providesTrendingApi(
         retrofitBuilder: Retrofit.Builder,
         okHttpClient: OkHttpClient
-    ): MoviesApi {
+    ): TrendingApi {
         return retrofitBuilder.client(okHttpClient).build()
-            .create(MoviesApi::class.java)
+            .create(TrendingApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun proviesSearchApi(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): SearchApi {
+        return retrofitBuilder.client(okHttpClient).build()
+            .create(SearchApi::class.java)
     }
 }

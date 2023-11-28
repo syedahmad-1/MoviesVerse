@@ -12,7 +12,7 @@
     <item
         android:id="@+id/wishlistFragment"
         android:icon="@drawable/bookmark"
-        android:title="@string/booking" />
+        android:title="@string/wishlist" />
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/profile"

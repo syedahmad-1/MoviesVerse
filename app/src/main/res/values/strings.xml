@@ -10,4 +10,8 @@
     <string name="best_movies">Best Movies</string>
     <string name="see_more">See More</string>
     <string name="top_rated_on_tv">Top Rated On Tv</string>
+    <string name="summary_example">The world\'s most lethal odd couple - bodyguard Michael Bryce and hitman Darius Kincaid - are back on anoth</string>
+    <string name="search_heading">Search.</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="discover">Discover.</string>
 </resources>
