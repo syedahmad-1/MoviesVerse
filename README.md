@@ -32,7 +32,7 @@ On Android versions prior to Android 6.0, wallabag requires the following permis
 -Read and write access to external storage.
 -The "Run at startup" permission is only used if Auto-Sync feature is enabled and is not utilised otherwise. The network access permissions are made use of for downloading content. The external storage permission is used to cache article images for viewing offline
 
-##Usage
+## Usage
 -Launch the MoviesVerse app on your device.
 
 -Explore the various sections to discover new movies and TV shows.
