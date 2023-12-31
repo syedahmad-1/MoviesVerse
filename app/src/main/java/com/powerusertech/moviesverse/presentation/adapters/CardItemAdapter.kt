@@ -8,18 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.powerusertech.moviesverse.R
-import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
+import com.powerusertech.moviesverse.core.utils.Constants
 import com.powerusertech.moviesverse.data.models.ResultX
-import com.powerusertech.moviesverse.databinding.HomeItemBinding
+import com.powerusertech.moviesverse.databinding.HomeCardItemBinding
 
-class HomeAdapter(private val onClick:(Int)->Unit) :
-    ListAdapter<ResultX, HomeAdapter.HomeViewHolder>(COMPARATOR) {
-    inner class HomeViewHolder(val binding: HomeItemBinding) :
+class CardItemAdapter : ListAdapter<ResultX, CardItemAdapter.CardItemViewHolder>(COMPARATOR) {
+    inner class CardItemViewHolder(val binding: HomeCardItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(
-            HomeItemBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardItemViewHolder {
+        return CardItemViewHolder(
+            HomeCardItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -27,24 +26,24 @@ class HomeAdapter(private val onClick:(Int)->Unit) :
         )
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardItemViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.apply {
-
-            posterIv.load(BASE_POSTER_URL + item.posterPath) {
-                crossfade(100)
+            posterIv.load(Constants.BASE_POSTER_URL + item.posterPath) {
+                crossfade(30)
                     .error(R.drawable.poster)
                     .transformations(RoundedCornersTransformation(25f))
             }
 
             val title = item.title ?: (item.name ?: item.originalTitle)
             nameTv.text = title
+            val averageVoting = item.voteAverage / 2
+            val rating = "$averageVoting"
+            if (rating.length >= 4) ratingTv.text = rating.subSequence(0, 4)
+            else ratingTv.text = rating
+            ratingBar.rating = averageVoting.toFloat()
 
-            root.setOnClickListener {
-                onClick.invoke(item.id)
-            }
         }
-
     }
 
     companion object {

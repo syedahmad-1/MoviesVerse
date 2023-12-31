@@ -1,7 +1,7 @@
-package com.powerusertech.moviesverse.data.network
+package com.powerusertech.moviesverse.data.network.repository
 
 import com.powerusertech.moviesverse.data.models.SearchResult
-import com.powerusertech.moviesverse.data.network.Api.SearchApi
+import com.powerusertech.moviesverse.data.network.api.SearchApi
 import retrofit2.Response
 import javax.inject.Inject
 

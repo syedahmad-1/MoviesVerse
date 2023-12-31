@@ -1,10 +1,12 @@
-package com.powerusertech.moviesverse.data.network
+package com.powerusertech.moviesverse.data.network.repository
 
 import com.powerusertech.moviesverse.data.models.TrendingResponse
-import com.powerusertech.moviesverse.data.network.Api.TrendingApi
+import com.powerusertech.moviesverse.data.network.api.TrendingApi
+import dagger.hilt.android.scopes.ViewModelScoped
 import retrofit2.Response
 import javax.inject.Inject
 
+@ViewModelScoped
 class TrendingRemoteDataSource @Inject constructor(private val trendingApi: TrendingApi) {
     suspend fun getTrendingMovies(): Response<TrendingResponse> {
         return trendingApi.getTrendingMoviesByWeek()

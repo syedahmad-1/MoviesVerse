@@ -12,7 +12,7 @@ import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.data.models.Result
 import com.powerusertech.moviesverse.databinding.SearchItemBinding
 
-class SearchAdapter: ListAdapter<Result, SearchAdapter.SearchViewHolder>(COMPARATOR) {
+class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<Result, SearchAdapter.SearchViewHolder>(COMPARATOR) {
     inner class SearchViewHolder(val binding:SearchItemBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -51,6 +51,9 @@ class SearchAdapter: ListAdapter<Result, SearchAdapter.SearchViewHolder>(COMPARA
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.apply {
+            root.setOnClickListener {
+                onClick.invoke(item.id)
+            }
             posterIv.load(BASE_POSTER_URL +item.posterPath){
                 crossfade(100)
                     .error(R.drawable.poster)
@@ -65,13 +68,13 @@ class SearchAdapter: ListAdapter<Result, SearchAdapter.SearchViewHolder>(COMPARA
             else ratingTv.text = rating
             ratingBar.rating = averageVoting.toFloat()
             summaryTv.text = item.overview
-            var genreList:String = ""
+            var genreList = ""
             for (genre in item.genreIds){
                 if (genreMapping.containsKey(genre)){
                     genreList += "${genreMapping[genre]}, "
                 }
             }
-            genreTv.text = genreList.subSequence(0, genreList.length-2)
+            genreTv.text = genreList
 
         }
     }

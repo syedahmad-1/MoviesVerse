@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse.presentation
+package com.powerusertech.moviesverse.presentation.home
 
 import android.app.Application
 import android.util.Log
@@ -26,6 +26,12 @@ class HomeViewModel @Inject constructor(application: Application, private val tr
 
     private val _trendingTvByWeekLiveData = MutableLiveData<NetworkResult<TrendingResponse>>()
     val trendingTvByWeekLiveData get() = _trendingTvByWeekLiveData
+
+    init {
+        getTrendingMoviesByWeek()
+        getTrendingAllByWeek()
+        getTrendingTvByWeek()
+    }
 
     fun getTrendingMoviesByWeek()=viewModelScope.launch{
         getTrendingMoviesSafeCall()

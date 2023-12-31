@@ -14,4 +14,8 @@
     <string name="search_heading">Search.</string>
     <string name="wishlist">Wishlist</string>
     <string name="discover">Discover.</string>
+    <string name="image">Image</string>
+    <string name="backbutton">backButton</string>
+    <string name="casts">Casts</string>
+    <string name="search_in_wishlist">Search in Wishlist</string>
 </resources>

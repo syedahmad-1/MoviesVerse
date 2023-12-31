@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.HomeFragment">
+    tools:context=".presentation.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,8 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/all_trending"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/see_more"
+            android:textSize="16sp"
             android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/headingTv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/headingTv"
             tools:itemCount="5"
-            tools:listitem="@layout/home_item" />
+            tools:listitem="@layout/home_card_item" />
 
         <TextView
             android:id="@+id/bestMovieTv"
@@ -51,8 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/best_movies"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trendingAllRv" />
@@ -63,6 +62,7 @@
             android:layout_height="wrap_content"
             android:text="@string/see_more"
             android:textColor="@color/yellow"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/bestMovieTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/bestMovieTv" />
@@ -86,8 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/top_rated_on_tv"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bestMovieRv" />
@@ -96,6 +95,7 @@
             android:id="@+id/seeMoreTopRatedOnTvTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:text="@string/see_more"
             android:textColor="@color/yellow"
             app:layout_constraintBottom_toBottomOf="@+id/topRatedOnTv"

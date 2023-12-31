@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse.presentation
+package com.powerusertech.moviesverse.presentation.search
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.powerusertech.moviesverse.core.utils.NetworkResult
 import com.powerusertech.moviesverse.databinding.FragmentSearchBinding
@@ -22,7 +23,11 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val searchViewModel by viewModels<SearchViewModel>()
-    private val searchAdapter by lazy { SearchAdapter() }
+    private val searchAdapter by lazy { SearchAdapter{
+        navigateToMovieDetails(it)
+    }
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,6 +82,11 @@ class SearchFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun navigateToMovieDetails(movieId:Int){
+        val action = SearchFragmentDirections.actionSearchFragmentToMovieDetailsFragment(movieId)
+        findNavController().navigate(action)
     }
 }
 

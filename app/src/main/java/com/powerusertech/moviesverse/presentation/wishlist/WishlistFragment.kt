@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse.presentation
+package com.powerusertech.moviesverse.presentation.wishlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

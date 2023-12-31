@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse.presentation
+package com.powerusertech.moviesverse.presentation.search
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,6 +9,7 @@ import com.powerusertech.moviesverse.core.utils.NetworkResult
 import com.powerusertech.moviesverse.data.SearchRepository
 import com.powerusertech.moviesverse.data.models.SearchResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
