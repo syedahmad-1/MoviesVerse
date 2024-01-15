@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.core.utils.NetworkResult
 import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
@@ -90,6 +91,7 @@ class MovieDetailsFragment : Fragment() {
             posterIv.load(BASE_POSTER_URL + data.posterPath) {
                 error(R.drawable.poster)
                     .crossfade(200)
+                    .transformations(RoundedCornersTransformation(25f))
             }
             nameTv.text = data.originalTitle
             descriptionTv.text = data.overview

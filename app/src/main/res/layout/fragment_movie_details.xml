@@ -25,9 +25,10 @@
             <ImageView
                 android:id="@+id/backDropIv"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="350dp"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/poster"
+                android:foreground="@drawable/gradient_img_bg"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -62,6 +63,7 @@
                 android:layout_margin="20dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
+                android:textColor="?android:textColorPrimary"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/backDropIv"
                 tools:text="Hitman’s Wife’s Bodyguard" />
@@ -96,6 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@id/ratingTv"
                 app:layout_constraintTop_toBottomOf="@id/ratingTv"
                 tools:text="Action, Comedy, Crime" />
@@ -116,6 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:textColor="?android:textColorSecondary"
                 app:layout_constraintStart_toStartOf="@id/categoriesTv"
                 app:layout_constraintTop_toBottomOf="@id/categoriesTv"
                 tools:text="The world's most lethal odd couple - bodyguard Michael Bryce and Darius Kincaid - are back on anoth most lethal odd couple - bodyguard Michael Bryce anan Darius Kincaid" />
@@ -127,8 +132,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/casts"
+                android:textColor="?android:textColorPrimary"
                 android:textStyle="bold"
-                android:textSize="22sp"
+                android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/descriptionTv" />
 
@@ -137,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:clipToPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
