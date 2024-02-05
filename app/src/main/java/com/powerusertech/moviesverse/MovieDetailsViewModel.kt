@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.powerusertech.moviesverse.core.utils.NetworkResult
+import com.powerusertech.moviesverse.data.local.FavouriteMovieEntity
 import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
 import com.powerusertech.moviesverse.data.network.repository.MovieDetailsRemoteDataSource
+import com.powerusertech.moviesverse.data.network.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +16,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailsViewModel @Inject constructor(private val movieDetailsRemote: MovieDetailsRemoteDataSource) :
+class MovieDetailsViewModel @Inject constructor(private val movieRepository: MovieRepository) :
     ViewModel() {
 
     private val _moveDetailsLiveData = MutableLiveData<NetworkResult<MovieDetailsResponse>>()
@@ -25,11 +27,23 @@ class MovieDetailsViewModel @Inject constructor(private val movieDetailsRemote: 
         getMoviesByIdSafeCall(movieId)
     }
 
+
+    fun addMovieToFavorites(movie:MovieDetailsResponse){
+        val movieEntity = FavouriteMovieEntity(movie)
+        insertMovie(movieEntity)
+    }
+
+    private fun insertMovie(movieEntity: FavouriteMovieEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            movieRepository.local.addFavoriteMovies(movieEntity)
+        }
+    }
+
     private suspend fun getMoviesByIdSafeCall(movieId: Int) {
         _moveDetailsLiveData.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
-                val response = movieDetailsRemote.getMovieById(movieId)
+                val response = movieRepository.remote.getMovieById(movieId)
                 _moveDetailsLiveData.value = handleMovieDetails(response)
             } catch (e: Exception) {
                 _moveDetailsLiveData.value = NetworkResult.Error(e.message)

@@ -15,6 +15,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.core.utils.NetworkResult
+import com.powerusertech.moviesverse.data.local.FavouriteMovieEntity
 import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
 import com.powerusertech.moviesverse.databinding.FragmentMovieDetailsBinding
 import com.powerusertech.moviesverse.presentation.adapters.CastingAdapter
@@ -53,6 +54,7 @@ class MovieDetailsFragment : Fragment() {
     private fun hideViews() {
         binding.mainContent.visibility = View.INVISIBLE
         binding.progressBar.visibility = View.VISIBLE
+        binding.bookMarkBtn.visibility = View.INVISIBLE
     }
 
     private fun observeLiveData() {
@@ -72,14 +74,23 @@ class MovieDetailsFragment : Fragment() {
                     Log.d(TAG, "onCreateView: ${it.data}")
                     showViews()
                     setData(it.data!!)
+                    binding.bookMarkBtn.setOnClickListener { onClick->
+                        addToFavourites(it.data)
+                    }
                 }
             }
         }
     }
 
+    private fun addToFavourites(data: MovieDetailsResponse) {
+        movieDetailsViewModel.addMovieToFavorites(data)
+        Log.d(TAG, "addToFavourites: Movie is being added")
+    }
+
     private fun showViews() {
         binding.mainContent.visibility = View.VISIBLE
         binding.progressBar.visibility = View.INVISIBLE
+        binding.bookMarkBtn.visibility = View.VISIBLE
     }
 
     private fun setData(data: MovieDetailsResponse) {
@@ -95,7 +106,7 @@ class MovieDetailsFragment : Fragment() {
             }
             nameTv.text = data.originalTitle
             descriptionTv.text = data.overview
-            ratingTv.text = String.format("%.2f", data.voteAverage / 2)
+            ratingTv.text = "${data.voteAverage}/10"
             ratingBar.rating = (data.voteAverage.toFloat()) / 2
             val language = "(${data.originalLanguage})"
             languageTv.text = language

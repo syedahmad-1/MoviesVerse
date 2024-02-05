@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.powerusertech.moviesverse.R
+import com.powerusertech.moviesverse.databinding.FragmentWishlistBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WishlistFragment : Fragment() {
+
+
+    private var _binding:FragmentWishlistBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
