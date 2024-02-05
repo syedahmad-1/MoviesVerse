@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/movieDetailsFragment"
-        android:name="com.powerusertech.moviesverse.MovieDetailsFragment"
+        android:name="com.powerusertech.moviesverse.presentation.moviedetails.MovieDetailsFragment"
         android:label="fragment_movie_details"
         tools:layout="@layout/fragment_movie_details" >
         <argument

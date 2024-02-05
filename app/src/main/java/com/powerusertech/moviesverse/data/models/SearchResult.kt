@@ -7,7 +7,7 @@ data class SearchResult(
     @SerializedName("page")
     val page: Int,
     @SerializedName("results")
-    val results: List<Result>,
+    val results: List<MovieDetailsResponse>,
     @SerializedName("total_pages")
     val totalPages: Int,
     @SerializedName("total_results")

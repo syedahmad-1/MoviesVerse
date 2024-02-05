@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse
+package com.powerusertech.moviesverse.presentation.moviedetails
 
 import android.os.Bundle
 import android.util.Log
@@ -7,21 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.powerusertech.moviesverse.R
 import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.core.utils.NetworkResult
-import com.powerusertech.moviesverse.data.local.FavouriteMovieEntity
 import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
 import com.powerusertech.moviesverse.databinding.FragmentMovieDetailsBinding
 import com.powerusertech.moviesverse.presentation.adapters.CastingAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailsFragment : Fragment() {

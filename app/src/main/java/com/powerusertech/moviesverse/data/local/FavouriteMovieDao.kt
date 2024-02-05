@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
 import kotlinx.coroutines.flow.Flow
 
 
@@ -17,4 +18,7 @@ interface FavouriteMovieDao {
 
     @Query("DELETE FROM favourite_movie_table WHERE id = :movieId ")
     suspend fun deleteById(movieId:Int)
+
+    @Query("SELECT * FROM favourite_movie_table WHERE title = :title")
+    suspend fun searchMovie(title:String):Flow<List<MovieDetailsResponse>>
 }

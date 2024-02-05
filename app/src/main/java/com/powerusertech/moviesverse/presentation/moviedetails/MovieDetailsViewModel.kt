@@ -1,4 +1,4 @@
-package com.powerusertech.moviesverse
+package com.powerusertech.moviesverse.presentation.moviedetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.powerusertech.moviesverse.core.utils.NetworkResult
 import com.powerusertech.moviesverse.data.local.FavouriteMovieEntity
 import com.powerusertech.moviesverse.data.models.moviedetails.MovieDetailsResponse
-import com.powerusertech.moviesverse.data.network.repository.MovieDetailsRemoteDataSource
 import com.powerusertech.moviesverse.data.network.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

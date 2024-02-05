@@ -9,10 +9,10 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.powerusertech.moviesverse.R
 import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
-import com.powerusertech.moviesverse.data.models.Result
+import com.powerusertech.moviesverse.data.models.MovieDetailsResponse
 import com.powerusertech.moviesverse.databinding.SearchItemBinding
 
-class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<Result, SearchAdapter.SearchViewHolder>(COMPARATOR) {
+class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<MovieDetailsResponse, SearchAdapter.SearchViewHolder>(COMPARATOR) {
     inner class SearchViewHolder(val binding:SearchItemBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -80,12 +80,12 @@ class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<Result, Search
     }
 
     companion object{
-        private val COMPARATOR = object : DiffUtil.ItemCallback<Result>(){
-            override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<MovieDetailsResponse>(){
+            override fun areItemsTheSame(oldItem: MovieDetailsResponse, newItem: MovieDetailsResponse): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+            override fun areContentsTheSame(oldItem: MovieDetailsResponse, newItem: MovieDetailsResponse): Boolean {
                 return oldItem == newItem
             }
 
