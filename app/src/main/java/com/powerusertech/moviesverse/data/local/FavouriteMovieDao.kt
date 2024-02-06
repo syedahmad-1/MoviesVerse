@@ -1,5 +1,6 @@
 package com.powerusertech.moviesverse.data.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -19,6 +20,6 @@ interface FavouriteMovieDao {
     @Query("DELETE FROM favourite_movie_table WHERE id = :movieId ")
     suspend fun deleteById(movieId:Int)
 
-    @Query("SELECT * FROM favourite_movie_table WHERE title = :title")
-    suspend fun searchMovie(title:String):Flow<List<MovieDetailsResponse>>
+    @Query("SELECT * FROM favourite_movie_table WHERE title LIKE '%' || :title || '%'")
+    fun searchMovie(title:String):List<FavouriteMovieEntity>
 }

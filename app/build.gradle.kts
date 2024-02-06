@@ -1,3 +1,5 @@
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -7,6 +9,12 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
+val localPropertiesFile = rootProject.file("local.properties")
+val localProperties = Properties()
+localProperties.load(FileInputStream(localPropertiesFile))
+
+
+
 android {
     namespace = "com.powerusertech.moviesverse"
     compileSdk = 34
@@ -15,7 +23,9 @@ android {
         enable = true
     }
 
+
     defaultConfig {
+        android.buildFeatures.buildConfig= true
         applicationId = "com.powerusertech.moviesverse"
         minSdk = 24
         targetSdk = 34
@@ -23,6 +33,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField(type = "String", name="apiKey", localProperties["apiKey"].toString())
     }
 
     buildTypes {

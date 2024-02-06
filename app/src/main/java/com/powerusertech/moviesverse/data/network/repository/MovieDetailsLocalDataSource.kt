@@ -1,5 +1,6 @@
 package com.powerusertech.moviesverse.data.network.repository
 
+import androidx.lifecycle.LiveData
 import com.powerusertech.moviesverse.data.local.FavouriteMovieDao
 import com.powerusertech.moviesverse.data.local.FavouriteMovieEntity
 import kotlinx.coroutines.flow.Flow
@@ -12,5 +13,8 @@ class MovieDetailsLocalDataSource @Inject constructor(private val favouriteMovie
 
     fun getAllMovies(): Flow<List<FavouriteMovieEntity>> {
         return favouriteMovieDao.getAllFavorites()
+    }
+    suspend fun searchMovieByTitle(title:String):List<FavouriteMovieEntity>{
+        return favouriteMovieDao.searchMovie(title)
     }
 }
