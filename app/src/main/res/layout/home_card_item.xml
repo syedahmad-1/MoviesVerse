@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/posterIv"
-        android:layout_width="182dp"
-        android:layout_height="273dp"
+        android:layout_width="250dp"
+        android:maxHeight="350dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/poster"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"

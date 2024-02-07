@@ -12,7 +12,7 @@ import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.data.models.MovieDetailsResponse
 import com.powerusertech.moviesverse.databinding.SearchItemBinding
 
-class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<MovieDetailsResponse, SearchAdapter.SearchViewHolder>(COMPARATOR) {
+class SearchAdapter(private val onClick:(Pair<Int, Boolean>)->Unit): ListAdapter<MovieDetailsResponse, SearchAdapter.SearchViewHolder>(COMPARATOR) {
     inner class SearchViewHolder(val binding:SearchItemBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -52,7 +52,12 @@ class SearchAdapter(private val onClick:(Int)->Unit): ListAdapter<MovieDetailsRe
         val item = getItem(position)
         holder.binding.apply {
             root.setOnClickListener {
-                onClick.invoke(item.id)
+                val isTv = if(item.mediaType=="tv"){
+                    true
+                } else {
+                    false
+                }
+                onClick.invoke(Pair(item.id, isTv))
             }
             posterIv.load(BASE_POSTER_URL +item.posterPath){
                 crossfade(100)

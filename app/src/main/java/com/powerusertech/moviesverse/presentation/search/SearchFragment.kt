@@ -24,7 +24,7 @@ class SearchFragment : Fragment() {
 
     private val searchViewModel by viewModels<SearchViewModel>()
     private val searchAdapter by lazy { SearchAdapter{
-        navigateToMovieDetails(it)
+        navigateToMovieDetails(it.first, it.second)
     }
 
     }
@@ -84,8 +84,8 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun navigateToMovieDetails(movieId:Int){
-        val action = SearchFragmentDirections.actionSearchFragmentToMovieDetailsFragment(movieId)
+    private fun navigateToMovieDetails(movieId:Int, isTv:Boolean){
+        val action = SearchFragmentDirections.actionSearchFragmentToMovieDetailsFragment(movieId, isTv)
         findNavController().navigate(action)
     }
 }

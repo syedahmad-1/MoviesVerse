@@ -41,5 +41,9 @@
         <argument
             android:name="movieId"
             app:argType="integer" />
+        <argument
+            android:name="isTv"
+            app:argType="boolean" />
+
     </fragment>
 </navigation>

@@ -12,7 +12,7 @@ import com.powerusertech.moviesverse.core.utils.Constants.BASE_POSTER_URL
 import com.powerusertech.moviesverse.data.models.ResultX
 import com.powerusertech.moviesverse.databinding.HomeItemBinding
 
-class HomeAdapter(private val onClick:(Int)->Unit) :
+class HomeAdapter(private val onClick:(Pair<Int, Boolean>)->Unit) :
     ListAdapter<ResultX, HomeAdapter.HomeViewHolder>(COMPARATOR) {
     inner class HomeViewHolder(val binding: HomeItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -41,7 +41,12 @@ class HomeAdapter(private val onClick:(Int)->Unit) :
             nameTv.text = title
 
             root.setOnClickListener {
-                onClick.invoke(item.id)
+                val isTv = if(item.mediaType=="tv"){
+                    true
+                } else {
+                    false
+                }
+                onClick.invoke(Pair(item.id, isTv))
             }
         }
 

@@ -29,18 +29,18 @@ class HomeFragment : Fragment() {
     private val homeViewModel by viewModels<HomeViewModel>()
 
     private val homeAdapter by lazy { HomeAdapter{
-        navigateToMovieDetailsFragment(it)
+        navigateToMovieDetailsFragment(it.first, it.second)
     } }
 
-    private fun navigateToMovieDetailsFragment(movieId: Int) {
+    private fun navigateToMovieDetailsFragment(movieId: Int, isTv:Boolean) {
         Toast.makeText(requireContext(), "movieId $movieId", Toast.LENGTH_SHORT).show()
-        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailsFragment(movieId)
+        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailsFragment(movieId, isTv)
         findNavController().navigate(action)
     }
 
     private val allTrendingAdapter by lazy { CardItemAdapter() }
     private val trendingTvAdapter by lazy { HomeAdapter{
-        navigateToMovieDetailsFragment(it)
+        navigateToMovieDetailsFragment(it.first, it.second)
     } }
 
     override fun onCreateView(

@@ -12,5 +12,8 @@ class MovieDetailsRemoteDataSource @Inject constructor(private val movieApi: Mov
     suspend fun getMovieById(movieId:Int): Response<MovieDetailsResponse> {
         return movieApi.getMovieById(movieId)
     }
+    suspend fun getTvById(tvId:Int): Response<MovieDetailsResponse> {
+        return movieApi.getTvById(tvId)
+    }
 
 }

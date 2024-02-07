@@ -38,7 +38,12 @@ class MovieDetailsFragment : Fragment() {
     ): View {
         _binding = FragmentMovieDetailsBinding.inflate(layoutInflater)
 
-        movieDetailsViewModel.getMoviesById(args.movieId)
+        if (!args.isTv){
+            movieDetailsViewModel.getMoviesById(args.movieId)
+        }else{
+            movieDetailsViewModel.getTvById(args.movieId)
+        }
+
         binding.backIcon.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -55,6 +60,28 @@ class MovieDetailsFragment : Fragment() {
     }
 
     private fun observeLiveData() {
+        movieDetailsViewModel.tvDetailsLiveData.observe(viewLifecycleOwner){
+            when (it) {
+                is NetworkResult.Error -> {
+                    Log.d(TAG, "onCreateView: ${it.message} error occurred")
+                    hideViews()
+                }
+
+                is NetworkResult.Loading -> {
+                    Log.d(TAG, "onCreateView: Loading...")
+                    hideViews()
+                }
+
+                is NetworkResult.Success -> {
+                    Log.d(TAG, "onCreateView: ${it.data}")
+                    showViews()
+                    setData(it.data!!)
+                    binding.bookMarkBtn.setOnClickListener { onClick->
+                        addToFavourites(it.data)
+                    }
+                }
+            }
+        }
         movieDetailsViewModel.movieDetailsResponseLiveData.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResult.Error -> {
