@@ -16,6 +16,12 @@ MoviesVerse is your go-to Android app for discovering new movies, TV shows, and 
 - **OkHttp:** An HTTP client for making network requests, enhancing the overall performance of the app.
 - **Hilt:** A dependency injection library for Android that simplifies the process of managing dependencies.
 
+## Screenshots
+
+* Discover Movies and Tv Shows Section: ![Discover Movies](homescreen.png)
+* Search Functionality: ![Search Functionality](searchscreen.png)
+* Show Details Section: ![Discover Movies](moviedetail.png)
+
 ## Installation
 
 1. Clone the repository:
