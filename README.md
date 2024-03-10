@@ -21,6 +21,7 @@ MoviesVerse is your go-to Android app for discovering new movies, TV shows, and 
 * Discover Movies and Tv Shows Section: ![Discover Movies](homescreen.png)
 * Search Functionality: ![Search Functionality](searchscreen.png)
 * Show Details Section: ![Discover Movies](moviedetail.png)
+* Add Movies to watch later on Wishlist: ![Discover Movies](wishlistscreen.png)
 
 ## Installation
 
